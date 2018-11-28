@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE dataset SYSTEM "database.dtd">
+
+<dataset>
+    <account id="1" nick="linux_china" email="linux_china@hotmail.com" phone="18667135137" passwd="123456"
+             created_at="[SEC,NOW]" updated_at="[SEC,NOW]"/>
+</dataset>
