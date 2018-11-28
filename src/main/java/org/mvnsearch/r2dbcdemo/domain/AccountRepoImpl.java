@@ -18,7 +18,7 @@ public class AccountRepoImpl implements AccountRepo {
 
     @Override
     public Flux<Account> findAll() {
-        return r2dbc.inTransaction(handle ->
+        return r2dbc.withHandle(handle ->
                 handle.select("SELECT * from account")
                         .mapResult(result -> result.map((row, rowMetadata) -> {
                             Account account = new Account();
