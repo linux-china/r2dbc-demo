@@ -16,9 +16,10 @@ public class AccountRepoImplTest extends BaseTest {
     private AccountRepo accountRepo;
 
     @Test
-    public void testFindAll() {
+    public void testFindAll() throws Exception {
         accountRepo.findAll().subscribe(account -> {
             System.out.println(account.getNick());
         });
+        Thread.sleep(2000);
     }
 }
