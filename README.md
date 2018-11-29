@@ -1,6 +1,10 @@
 R2DBC Demo
 ==========
 
+### Databases
+
+* H2
+* PostgreSQL
 
 ### Features
 
