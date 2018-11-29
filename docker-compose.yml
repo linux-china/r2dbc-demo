@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  postgresql:
+    image: postgres:11.1-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: r2dbc
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8888:8080"
+    links:
+      - postgresql:postgresql
