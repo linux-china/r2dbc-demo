@@ -23,6 +23,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <database-rider.version>1.4.0</database-rider.version>
+        <r2dbc.version>1.0.0.M6</r2dbc.version>
     </properties>
 
     <dependencies>
@@ -41,12 +42,21 @@
         <dependency>
             <groupId>io.r2dbc</groupId>
             <artifactId>r2dbc-client</artifactId>
-            <version>1.0.0.M6</version>
+            <version>${r2dbc.version}</version>
         </dependency>
         <dependency>
             <groupId>io.r2dbc</groupId>
             <artifactId>r2dbc-h2</artifactId>
-            <version>1.0.0.M6</version>
+            <version>${r2dbc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.r2dbc</groupId>
+            <artifactId>r2dbc-postgresql</artifactId>
+            <version>${r2dbc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
         </dependency>
         <dependency>
             <groupId>org.flywaydb</groupId>
