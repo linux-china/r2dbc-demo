@@ -30,7 +30,6 @@ public class R2DBCAutoConfiguration extends AbstractR2dbcConfiguration {
     @Bean
     @Primary
     public R2dbc r2dbcPostgresql() {
-
         return new R2dbc(new PostgresqlConnectionFactory(postgresqlConnectionConfiguration()));
     }
 
