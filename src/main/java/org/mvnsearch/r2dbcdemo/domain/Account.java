@@ -1,5 +1,8 @@
 package org.mvnsearch.r2dbcdemo.domain;
 
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
 import java.util.Date;
 
 /**
@@ -7,11 +10,13 @@ import java.util.Date;
  *
  * @author linux_china
  */
+@Table("account")
 public class Account {
     private Integer id;
     private String nick;
     private String email;
     private String phone;
+    @Column("passwd")
     private String password;
     private Date createdAt;
     private Date updatedAt;
