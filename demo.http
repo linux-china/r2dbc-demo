@@ -1,4 +1,7 @@
 ### Get all accounts
 GET http://localhost:8080/accounts
 
+### get account by nick
+GET http://localhost:8080/account/linux_china
+
 ###
