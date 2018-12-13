@@ -5,3 +5,9 @@ GET http://localhost:8080/accounts
 GET http://localhost:8080/account/linux_china
 
 ###
+POST http://localhost:8080/account/update_passwd
+Content-Type: application/x-www-form-urlencoded
+
+id=1&password=654321
+
+###
