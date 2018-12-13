@@ -4,9 +4,8 @@ import org.mvnsearch.r2dbcdemo.domain.Account;
 import org.mvnsearch.r2dbcdemo.domain.AccountReactiveRepo;
 import org.mvnsearch.r2dbcdemo.domain.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -30,5 +29,10 @@ public class PortalController {
     @RequestMapping("/account/{nick}")
     public Mono<Account> showAccountByNick(@PathVariable String nick) {
         return accountReactiveRepo.findByNick(nick);
+    }
+
+    @PostMapping("/account/update_passwd")
+    public Mono<Integer> updatePassword(@Param(value = "id") Integer id, @Param(value = "id") String password) {
+        return accountRepo.updatePassword(id, password);
     }
 }
