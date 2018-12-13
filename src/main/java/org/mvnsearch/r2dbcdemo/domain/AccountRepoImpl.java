@@ -2,11 +2,13 @@ package org.mvnsearch.r2dbcdemo.domain;
 
 import io.r2dbc.client.R2dbc;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.r2dbc.function.DatabaseClient;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.Date;
+import static org.springframework.data.domain.Sort.Order.desc;
 
 /**
  * account repository implementation
@@ -17,29 +19,35 @@ import java.util.Date;
 public class AccountRepoImpl implements AccountRepo {
     @Autowired
     private R2dbc r2dbc;
+    @Autowired
+    private DatabaseClient databaseClient;
 
     @Override
     public Flux<Account> findAll() {
-        return r2dbc.withHandle(handle ->
-                handle.select("SELECT * from account")
-                        .mapResult(result -> result.map((row, rowMetadata) -> {
-                            Account account = new Account();
-                            account.setId(row.get("id", Integer.class));
-                            account.setEmail(row.get("email", String.class));
-                            account.setNick(row.get("nick", String.class));
-                            account.setPhone(row.get("phone", String.class));
-                            account.setPassword(row.get("passwd", String.class));
-                            account.setCreatedAt(row.get("created_at", Date.class));
-                            account.setUpdatedAt(row.get("updated_at", Date.class));
-                            return account;
-                        })));
-
+        return databaseClient.select()
+                .from(Account.class)
+                .orderBy(Sort.by(desc("id")))
+                .fetch()
+                .all();
     }
 
     @Override
     public Mono<Integer> save(Account account) {
-        return r2dbc.inTransaction(handle ->
-                handle.execute("INSERT INTO  account(nick,email,phone,passwd,created_at, updated_at) values($1,$2,'18667135137','123456',current_timestamp(),current_timestamp())", account.getNick(), account.getEmail()))
-                .reduce(0, (x1, x2) -> x1 + x2);
+        return databaseClient.execute()
+                .sql("INSERT INTO account(nick,email,phone,passwd,created_at, updated_at) values($1,$2,'18667135137','123456',current_timestamp,current_timestamp)")
+                .bind("$1", account.getNick())
+                .bind("$2", account.getEmail())
+                .fetch()
+                .rowsUpdated();
+    }
+
+    @Override
+    public Mono<Integer> updatePassword(Integer id, String newPassword) {
+        return databaseClient.execute()
+                .sql("update account set passwd = $1 where id = $2")
+                .bind("$1", newPassword)
+                .bind("$2", id)
+                .fetch()
+                .rowsUpdated();
     }
 }
