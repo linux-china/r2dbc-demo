@@ -9,7 +9,8 @@ import reactor.core.publisher.Mono;
  * @author linux_china
  */
 public interface AccountRepo {
-    public Flux<Account> findAll();
+    
+    Flux<Account> findAll();
 
-    public Mono<Integer> save(Account account);
+    Mono<Integer> updatePassword(Integer id, String newPassword);
 }

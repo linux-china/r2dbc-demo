@@ -32,16 +32,6 @@ public class AccountRepoImpl implements AccountRepo {
     }
 
     @Override
-    public Mono<Integer> save(Account account) {
-        return databaseClient.execute()
-                .sql("INSERT INTO account(nick,email,phone,passwd,created_at, updated_at) values($1,$2,'18667135137','123456',current_timestamp,current_timestamp)")
-                .bind("$1", account.getNick())
-                .bind("$2", account.getEmail())
-                .fetch()
-                .rowsUpdated();
-    }
-
-    @Override
     public Mono<Integer> updatePassword(Integer id, String newPassword) {
         return databaseClient.execute()
                 .sql("update account set passwd = $1 where id = $2")
