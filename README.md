@@ -12,6 +12,13 @@ R2DBC Demo
 * database-rider to manage dataset
 * r2dbc for reactive
 
+### R2DBC Connection URLs
+
+r2dbc:mysql://localhost:3306/my_database?locale=en_US
+\___/ \___/\_______________/\__________/\___________/
+  |     |             |          |           |
+scheme  sub-scheme  authority   path       query
+
 # References
 
 * R2DBC Home: http://r2dbc.io/
