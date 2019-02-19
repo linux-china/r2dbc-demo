@@ -23,3 +23,4 @@ scheme  sub-scheme  authority   path       query
 
 * R2DBC Home: http://r2dbc.io/
 * Spring Data R2DBC 1.0 M1 released: https://spring.io/blog/2018/12/12/spring-data-r2dbc-1-0-m1-released
+* Spring Data R2DBC - Reference Documentation: https://docs.spring.io/spring-data/r2dbc/docs/1.0.x/reference/html/
