@@ -1,0 +1,43 @@
+@startuml
+
+
+interface ConnectionFactory {
+   Publisher<? extends Connection> create();
+}
+
+class R2dbc {
+   R2dbc(ConnectionFactory connectionFactory)
+   Mono<Handle> open()
+   Mono<Void> useHandle(Function<Handle, ? extends Publisher<?>> f)
+   Flux<T> withHandle(Function<Handle, ? extends Publisher<? extends T>> f)
+}
+
+class Handle {
+   Handle(Connection connection)
+   Query createQuery(String sql)
+   Update createUpdate(String sql)
+}
+
+interface ResultBearing {
+   Flux<T> mapResult(Function<Result, ? extends Publisher<? extends T>> f)
+}
+
+class Query implements ResultBearing {
+   Query bind(Object identifier, Object value)
+   Flux<T> mapResult(Function<Result, ? extends Publisher<? extends T>> f)
+}
+
+class Update {
+   Update bind(Object identifier, Object value)
+   Flux<Integer> execute()
+}
+
+R2dbc -left-* ConnectionFactory: construct
+
+R2dbc --* Handle: open
+
+Handle --> Query: query
+
+Handle --> Update: update
+
+@enduml
