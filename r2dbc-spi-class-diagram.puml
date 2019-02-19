@@ -58,6 +58,11 @@ interface RowMetadata {
    Iterable<? extends ColumnMetadata> getColumnMetadatas();
 }
 
+interface ColumnMetadata {
+   String getName();
+   Class<?> getJavaType()
+}
+
 interface Row {
     T get(Object identifier, Class<T> type);
 }
@@ -69,6 +74,7 @@ ConnectionFactoryProvider --* ConnectionFactory: Create
 
 
 ConnectionFactory --* Connection: Create
+
 ConnectionFactory -right-> ConnectionFactoryMetadata: metadata
 
 
@@ -77,7 +83,9 @@ Connection --> Batch: createBatch
 
 Statement --> Result: execute
 
-Result -right->  RowMetadata: metadata
+Result -right-> RowMetadata: metadata
+
+RowMetadata -right-> ColumnMetadata: column metadatas
 
 Result --> Row: rows
 
