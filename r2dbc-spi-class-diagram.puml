@@ -1,0 +1,84 @@
+@startuml
+
+class ConnectionFactoryOptions {
+   String HOST;
+   String PORT;
+   String DATABASE;
+   String USER;
+   String PASSWORD;
+   String DRIVER;
+   String PROTOCOL;
+
+}
+
+interface ConnectionFactoryProvider {
+    ConnectionFactory create(ConnectionFactoryOptions connectionFactoryOptions);
+    boolean supports(ConnectionFactoryOptions connectionFactoryOptions);
+}
+
+
+interface ConnectionFactory {
+    Publisher<? extends Connection> create();
+    ConnectionFactoryMetadata getMetadata();
+}
+
+interface ConnectionFactoryMetadata {
+   String getName();
+}
+
+interface Connection {
+    Publisher<Void> beginTransaction();
+    Publisher<Void> commitTransaction();
+    Publisher<Void> rollbackTransaction();
+    Batch createBatch();
+    Statement createStatement(String sql);
+    Publisher<Void> close();
+}
+
+interface Batch {
+    Batch add(String sql);
+    Publisher<? extends Result> execute();
+}
+
+interface Statement {
+    Statement bind(Object identifier, Object value);
+    Statement bind(int index, Object value);
+    Statement bindNull(int index, Class<?> type);
+    Publisher<? extends Result> execute();
+}
+
+interface Result {
+    Publisher<Integer> getRowsUpdated();
+    Publisher<T> map(BiFunction<Row, RowMetadata, ? extends T> f);
+}
+
+
+interface RowMetadata {
+   ColumnMetadata getColumnMetadata(Object identifier);
+   Iterable<? extends ColumnMetadata> getColumnMetadatas();
+}
+
+interface Row {
+    T get(Object identifier, Class<T> type);
+}
+
+ConnectionFactoryProvider -right-> ConnectionFactoryOptions
+
+
+ConnectionFactoryProvider --* ConnectionFactory: Create
+
+
+ConnectionFactory --* Connection: Create
+ConnectionFactory -right-> ConnectionFactoryMetadata: metadata
+
+
+Connection --> Statement: createStatement by sql
+Connection --> Batch: createBatch
+
+Statement --> Result: execute
+
+Result -right->  RowMetadata: metadata
+
+Result --> Row: rows
+
+@enduml
