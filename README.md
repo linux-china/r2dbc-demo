@@ -5,6 +5,7 @@ R2DBC Demo
 
 * H2
 * PostgreSQL
+* MySQL: jasync-r2dbc-mysql
 
 ### Features
 
