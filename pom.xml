@@ -25,6 +25,7 @@
         <database-rider.version>1.5.2</database-rider.version>
         <junit5.version>5.4.1</junit5.version>
         <r2dbc-bom.version>Arabba-M7</r2dbc-bom.version>
+        <jasync-mysql.version>0.9.32</jasync-mysql.version>
     </properties>
 
     <dependencies>
@@ -56,7 +57,7 @@
         <dependency>
             <groupId>com.github.jasync-sql</groupId>
             <artifactId>jasync-r2dbc-mysql</artifactId>
-            <version>0.9.32</version>
+            <version>${jasync-mysql.version}</version>
         </dependency>
         <dependency>
             <groupId>io.r2dbc</groupId>
