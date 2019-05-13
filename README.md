@@ -15,10 +15,14 @@ R2DBC Demo
 
 ### R2DBC Connection URLs
 
+R2DBC Connection URL support: https://github.com/r2dbc/r2dbc-spi/pull/48
+
+```
 r2dbc:mysql://localhost:3306/my_database?locale=en_US
 \___/ \___/\_______________/\__________/\___________/
   |     |             |          |           |
 scheme  sub-scheme  authority   path       query
+```
 
 # References
 
