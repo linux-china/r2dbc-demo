@@ -5,7 +5,7 @@ R2DBC Demo
 
 * H2
 * PostgreSQL
-* MySQL: jasync-r2dbc-mysql
+* MySQL: jasync-r2dbc-mysql  https://github.com/r2dbc/r2dbc-client/blob/master/src/test/java/io/r2dbc/client/MysqlExample.java
 
 ### Features
 
