@@ -12,6 +12,7 @@ R2DBC Demo
 * flyway to init database
 * database-rider to manage dataset
 * r2dbc for reactive
+* BLOB/CLOB API: https://github.com/r2dbc/r2dbc-spi/issues/41
 
 ### R2DBC Connection URLs
 
