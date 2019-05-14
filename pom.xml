@@ -22,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <spring.version>5.2.0.M2</spring.version>
         <database-rider.version>1.5.3</database-rider.version>
         <junit5.version>5.4.2</junit5.version>
         <r2dbc-bom.version>Arabba-M8</r2dbc-bom.version>
@@ -84,7 +85,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.199</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -134,6 +134,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>io.r2dbc</groupId>
                 <artifactId>r2dbc-bom</artifactId>
