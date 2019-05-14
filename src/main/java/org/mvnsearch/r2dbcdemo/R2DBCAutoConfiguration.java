@@ -39,7 +39,7 @@ public class R2DBCAutoConfiguration extends AbstractR2dbcConfiguration {
         return new H2ConnectionFactory(configuration);
     }*/
 
-    @Bean
+    /*@Bean
     @Primary
     public R2dbc r2dbcPostgresql() {
         return new R2dbc(new PostgresqlConnectionFactory(postgresqlConnectionConfiguration()));
@@ -58,9 +58,9 @@ public class R2DBCAutoConfiguration extends AbstractR2dbcConfiguration {
     @Override
     public ConnectionFactory connectionFactory() {
         return new PostgresqlConnectionFactory(postgresqlConnectionConfiguration());
-    }
+    }*/
 
-    /*@Bean
+    @Bean
     public R2dbc r2dbcMySQL() {
         String url = "mysql://root:123456@30.56.164.234:3306/r2dbc";
         return new R2dbc(new JasyncConnectionFactory(new MySQLConnectionFactory(
@@ -72,5 +72,5 @@ public class R2DBCAutoConfiguration extends AbstractR2dbcConfiguration {
         String url = "mysql://root:123456@30.56.164.234:3306/r2dbc";
         return new JasyncConnectionFactory(new MySQLConnectionFactory(
                 URLParser.INSTANCE.parseOrDie(url, StandardCharsets.UTF_8)));
-    }*/
+    }
 }
