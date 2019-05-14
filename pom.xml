@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-r2dbc</artifactId>
-            <version>1.0.0.gh-75-SNAPSHOT</version>
+            <version>1.0.0.M2</version>
         </dependency>
         <dependency>
             <groupId>io.r2dbc</groupId>
