@@ -33,3 +33,4 @@ scheme  sub-scheme  authority   path       query
 * Spring Data R2DBC - Reference Documentation: https://docs.spring.io/spring-data/r2dbc/docs/1.0.x/reference/html/
 * Asynchronous RDBMS access with Spring Data R2DBC: https://lankydanblog.com/2019/02/16/asynchronous-rdbms-access-with-spring-data-r2dbc/
 * jasync-sql: https://github.com/jasync-sql/jasync-sql
+* Experimental Spring Boot support for R2DBC: https://github.com/spring-projects-experimental/spring-boot-r2dbc
