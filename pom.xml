@@ -22,11 +22,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring.version>5.2.0.M2</spring.version>
+        <spring.version>5.2.0.M3</spring.version>
         <database-rider.version>1.6.0</database-rider.version>
-        <junit5.version>5.4.2</junit5.version>
+        <junit5.version>5.5.0-RC1</junit5.version>
         <r2dbc-bom.version>Arabba-M8</r2dbc-bom.version>
-        <jasync-mysql.version>0.9.53</jasync-mysql.version>
+        <jasync-mysql.version>0.9.54</jasync-mysql.version>
         <kotlin.version>1.3.31</kotlin.version>
     </properties>
 
