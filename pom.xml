@@ -27,7 +27,7 @@
         <junit5.version>5.5.0</junit5.version>
         <r2dbc-bom.version>Arabba-M8</r2dbc-bom.version>
         <reactor-bom.version>Dysprosium-M3</reactor-bom.version>
-        <jasync-mysql.version>1.0.2</jasync-mysql.version>
+        <jasync-mysql.version>1.0.5</jasync-mysql.version>
         <kotlin.version>1.3.41</kotlin.version>
     </properties>
 
