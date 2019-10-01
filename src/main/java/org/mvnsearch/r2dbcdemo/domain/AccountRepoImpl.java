@@ -33,8 +33,7 @@ public class AccountRepoImpl implements AccountRepo {
 
     @Override
     public Mono<Integer> updatePassword(Integer id, String newPassword) {
-        return databaseClient.execute()
-                .sql("update account set passwd = $1 where id = $2")
+        return databaseClient.execute("update account set passwd = $1 where id = $2")
                 .bind("$1", newPassword)
                 .bind("$2", id)
                 .fetch()
