@@ -7,7 +7,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -22,13 +22,14 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         accountReactiveRepo.findByNick("007").hasElement().subscribe(founded -> {
             if (!founded) {
+                LocalDateTime now = LocalDateTime.now();
                 Account account = new Account();
                 account.setEmail("007@gmail.com");
                 account.setNick("007");
                 account.setPassword("123456");
                 account.setPhone("001007");
-                account.setCreatedAt(new Date());
-                account.setUpdatedAt(new Date());
+                account.setCreatedAt(now);
+                account.setUpdatedAt(now);
                 accountReactiveRepo.save(account).subscribe();
                 System.out.println("Account imported.");
             }
