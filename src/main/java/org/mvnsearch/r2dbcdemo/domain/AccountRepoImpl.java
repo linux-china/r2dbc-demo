@@ -1,6 +1,5 @@
 package org.mvnsearch.r2dbcdemo.domain;
 
-import io.r2dbc.client.R2dbc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.r2dbc.core.DatabaseClient;
@@ -17,8 +16,6 @@ import static org.springframework.data.domain.Sort.Order.desc;
  */
 @Repository
 public class AccountRepoImpl implements AccountRepo {
-    @Autowired
-    private R2dbc r2dbc;
     @Autowired
     private DatabaseClient databaseClient;
 
