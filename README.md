@@ -5,7 +5,7 @@ R2DBC Demo
 
 * H2
 * PostgreSQL
-* MySQL: jasync-r2dbc-mysql  https://github.com/r2dbc/r2dbc-client/blob/master/src/test/java/io/r2dbc/client/MysqlExample.java
+* MySQL: https://github.com/mirromutth/r2dbc-mysql
 
 ### Features
 
@@ -32,5 +32,7 @@ scheme  sub-scheme  authority   path       query
 * Spring Data R2DBC 1.0 M1 released: https://spring.io/blog/2018/12/12/spring-data-r2dbc-1-0-m1-released
 * Spring Data R2DBC - Reference Documentation: https://docs.spring.io/spring-data/r2dbc/docs/1.0.x/reference/html/
 * Asynchronous RDBMS access with Spring Data R2DBC: https://lankydanblog.com/2019/02/16/asynchronous-rdbms-access-with-spring-data-r2dbc/
-* jasync-sql: https://github.com/jasync-sql/jasync-sql
+* R2DBC MySQL: https://github.com/mirromutth/r2dbc-mysql
 * Experimental Spring Boot support for R2DBC: https://github.com/spring-projects-experimental/spring-boot-r2dbc
+* Accessing data with R2DBC: https://spring.io/guides/gs/accessing-data-r2dbc/
+
