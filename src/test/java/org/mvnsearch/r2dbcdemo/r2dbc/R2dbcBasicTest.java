@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.r2dbc.DataR2dbcTest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.r2dbc.core.DatabaseClient;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 import static org.springframework.data.domain.Sort.Order.desc;
 
@@ -20,14 +23,24 @@ public class R2dbcBasicTest {
     @Autowired
     private DatabaseClient databaseClient;
 
+    @Autowired
+    private AccountReactiveRepo2 repo2;
+
     @Test
-    public void testDemo() throws Exception {
-        databaseClient.select()
+    public void testDatabaseClient() throws Exception {
+        Flux<Account> accounts = databaseClient.select()
                 .from(Account.class)
                 .orderBy(Sort.by(desc("id")))
                 .fetch()
-                .all()
-                .subscribe(account -> System.out.println(account.getNick()));
-        Thread.sleep(1000);
+                .all();
+        StepVerifier.create(accounts).expectNextCount(2).verifyComplete();
+    }
+
+    @Test
+    public void testReactiveRepo() {
+        Mono<Account> account = repo2.findByNick("linux_china");
+        StepVerifier.create(account).consumeNextWith(account1 -> {
+            System.out.println(account1.getEmail());
+        }).verifyComplete();
     }
 }
