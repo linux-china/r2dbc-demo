@@ -27,7 +27,7 @@ public class R2dbcBasicTest {
     private AccountReactiveRepo2 repo2;
 
     @Test
-    public void testDatabaseClient() throws Exception {
+    public void testDatabaseClient() {
         Flux<Account> accounts = databaseClient.select()
                 .from(Account.class)
                 .orderBy(Sort.by(desc("id")))
