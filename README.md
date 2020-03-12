@@ -5,7 +5,9 @@ R2DBC Demo
 
 * H2
 * PostgreSQL
+* Microsoft SQL Server
 * MySQL: https://github.com/mirromutth/r2dbc-mysql
+* MariaDB R2DBC connector: Non-blocking MariaDB and MySQL client: https://github.com/mariadb-corporation/mariadb-connector-r2dbc
 
 ### Features
 
