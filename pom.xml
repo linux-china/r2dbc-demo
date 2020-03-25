@@ -23,7 +23,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <netty.version>4.1.48.Final</netty.version>
-        <database-rider.version>1.10.0</database-rider.version>
+        <database-rider.version>1.10.1</database-rider.version>
         <junit5.version>5.6.1</junit5.version>
         <r2dbc-bom.version>Arabba-SR3</r2dbc-bom.version>
         <reactor-bom.version>Dysprosium-SR6</reactor-bom.version>
