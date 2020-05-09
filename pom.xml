@@ -73,6 +73,11 @@
             <artifactId>HikariCP</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.mariadb</groupId>
+            <artifactId>r2dbc-mariadb</artifactId>
+            <version>0.8.2-alpha2</version>
+        </dependency>
+        <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
