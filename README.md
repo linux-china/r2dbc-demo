@@ -37,4 +37,5 @@ scheme  sub-scheme  authority   path       query
 * R2DBC MySQL: https://github.com/mirromutth/r2dbc-mysql
 * Experimental Spring Boot support for R2DBC: https://github.com/spring-projects-experimental/spring-boot-r2dbc
 * Accessing data with R2DBC: https://spring.io/guides/gs/accessing-data-r2dbc/
+* What is JDBC? https://www.marcobehler.com/guides/jdbc
 
