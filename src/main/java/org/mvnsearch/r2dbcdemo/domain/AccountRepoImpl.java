@@ -1,5 +1,6 @@
 package org.mvnsearch.r2dbcdemo.domain;
 
+import io.r2dbc.spi.Row;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Repository;
@@ -21,19 +22,7 @@ public class AccountRepoImpl implements AccountRepo {
     @Override
     public Flux<Account> findAll() {
         return databaseClient.sql("select * from account order by id desc")
-                .fetch()
-                .all()
-                .map(row -> {
-                    Account account = new Account();
-                    account.setId((Integer) row.get("id"));
-                    account.setNick((String) row.get("nick"));
-                    account.setEmail((String) row.get("email"));
-                    account.setPhone((String) row.get("phone"));
-                    account.setPassword((String) row.get("passwd"));
-                    account.setCreatedAt((LocalDateTime) row.get("created_at"));
-                    account.setUpdatedAt((LocalDateTime) row.get("updated_at"));
-                    return account;
-                });
+                .map(this::row2Account).all();
     }
 
     @Override
@@ -43,5 +32,16 @@ public class AccountRepoImpl implements AccountRepo {
                 .bind("$2", id)
                 .fetch()
                 .rowsUpdated();
+    }
+
+    public Account row2Account(Row row) {
+        Account account = new Account();
+        account.setNick(row.get("nick", String.class));
+        account.setId(row.get("id", Integer.class));
+        account.setEmail(row.get("email", String.class));
+        account.setPhone(row.get("phone", String.class));
+        account.setCreatedAt(row.get("created_at", LocalDateTime.class));
+        account.setUpdatedAt(row.get("updated_at", LocalDateTime.class));
+        return account;
     }
 }
