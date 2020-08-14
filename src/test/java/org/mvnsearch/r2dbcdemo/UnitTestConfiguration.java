@@ -19,6 +19,7 @@ public class UnitTestConfiguration {
     public DataSource dataSource(@Autowired DataSourceProperties properties) {
         return DataSourceBuilder.create()
                 .url(properties.getUrl())
+                .driverClassName(properties.getDriverClassName())
                 .username(properties.getUsername())
                 .password(properties.getPassword())
                 .driverClassName(properties.getDriverClassName()).build();

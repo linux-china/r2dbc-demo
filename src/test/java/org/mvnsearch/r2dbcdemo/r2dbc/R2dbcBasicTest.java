@@ -4,20 +4,17 @@ import org.junit.jupiter.api.Test;
 import org.mvnsearch.r2dbcdemo.domain.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.r2dbc.DataR2dbcTest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.r2dbc.core.DatabaseClient;
+import org.springframework.r2dbc.core.DatabaseClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-
-import static org.springframework.data.domain.Sort.Order.desc;
 
 /**
  * R2DBC basic test
  *
  * @author linux_china
  */
-@DataR2dbcTest(properties = {"spring.r2dbc.url=r2dbc:mysql://127.0.0.1:3306/r2dbc", "spring.r2dbc.username=root"})
+@DataR2dbcTest(properties = {"spring.r2dbc.url=r2dbc:mariadb://127.0.0.1:3306/r2dbc", "spring.r2dbc.username=root"})
 public class R2dbcBasicTest {
 
     @Autowired
@@ -28,11 +25,14 @@ public class R2dbcBasicTest {
 
     @Test
     public void testDatabaseClient() {
-        Flux<Account> accounts = databaseClient.select()
-                .from(Account.class)
-                .orderBy(Sort.by(desc("id")))
+        Flux<Account> accounts = databaseClient.sql("select * from account order by id desc")
                 .fetch()
-                .all();
+                .all()
+                .map(map -> {
+                    Account account = new Account();
+                    account.setId((Integer) map.get("id"));
+                    return account;
+                });
         StepVerifier.create(accounts).expectNextCount(2).verifyComplete();
     }
 

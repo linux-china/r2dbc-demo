@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @DataSet("/dataset/account.xml")
 public class AccountRepoImplTest extends BaseTest {
     @Autowired
-    private AccountReactiveRepo accountRepo;
+    private AccountRepo accountRepo;
 
     @Test
     public void testFindAll() throws Exception {
@@ -23,11 +23,4 @@ public class AccountRepoImplTest extends BaseTest {
         Thread.sleep(2000);
     }
 
-    @Test
-    public void testFindByNick() throws Exception {
-        accountRepo.findByNick("linux_china").subscribe(account -> {
-            System.out.println(account.getNick());
-        });
-        Thread.sleep(2000);
-    }
 }
