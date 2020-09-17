@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.mvnsearch.r2dbcdemo.domain.Account;
 import org.reactivestreams.Publisher;
+import org.springframework.r2dbc.core.DatabaseClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -20,6 +21,7 @@ import java.time.LocalDateTime;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MariadbR2DBCTest {
     private Connection connection;
+    private DatabaseClient databaseClient;
 
 
     @BeforeAll
@@ -27,12 +29,23 @@ public class MariadbR2DBCTest {
         String r2dbcUrl = "r2dbc:mariadb://root@localhost:3306/r2dbc";
         ConnectionFactory connectionFactory = ConnectionFactories.get(r2dbcUrl);
         this.connection = Mono.from(connectionFactory.create()).block();
+        this.databaseClient = DatabaseClient.create(connectionFactory);
     }
 
     @AfterAll
     public void afterAll() throws Exception {
         Thread.sleep(1000);
         Mono.just(this.connection.close()).subscribe();
+        Thread.sleep(1000);
+    }
+
+    @Test
+    public void testDatabaseClient() throws Exception {
+        databaseClient.sql("select * from account").map(row -> {
+            return row.get("email", String.class);
+        }).all().subscribe(email -> {
+            System.out.println(email);
+        });
         Thread.sleep(1000);
     }
 
@@ -44,7 +57,7 @@ public class MariadbR2DBCTest {
                     return row2Account(row);
                 }))
                 .subscribe(account -> {
-                    System.out.println(account.getCreatedAt());
+                    System.out.println(account.getEmail());
                 });
         Thread.sleep(1000);
     }
