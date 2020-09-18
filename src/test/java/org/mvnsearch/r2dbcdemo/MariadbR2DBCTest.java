@@ -7,11 +7,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.mvnsearch.r2dbcdemo.domain.Account;
 import org.reactivestreams.Publisher;
+import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
+import org.springframework.data.r2dbc.dialect.MySqlDialect;
+import org.springframework.data.relational.core.query.Query;
 import org.springframework.r2dbc.core.DatabaseClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
+
+import static org.springframework.data.relational.core.query.Criteria.where;
 
 /**
  * Mariadb R2DBC test
@@ -22,6 +27,7 @@ import java.time.LocalDateTime;
 public class MariadbR2DBCTest {
     private Connection connection;
     private DatabaseClient databaseClient;
+    private R2dbcEntityTemplate r2dbcEntityTemplate;
 
 
     @BeforeAll
@@ -30,6 +36,7 @@ public class MariadbR2DBCTest {
         ConnectionFactory connectionFactory = ConnectionFactories.get(r2dbcUrl);
         this.connection = Mono.from(connectionFactory.create()).block();
         this.databaseClient = DatabaseClient.create(connectionFactory);
+        this.r2dbcEntityTemplate = new R2dbcEntityTemplate(databaseClient, MySqlDialect.INSTANCE);
     }
 
     @AfterAll
@@ -41,12 +48,17 @@ public class MariadbR2DBCTest {
 
     @Test
     public void testDatabaseClient() throws Exception {
-        databaseClient.sql("select * from account").map(row -> {
-            return row.get("email", String.class);
-        }).all().subscribe(email -> {
-            System.out.println(email);
-        });
+        databaseClient.sql("select * from account").filter((statement, next) -> next.execute(statement.fetchSize(100))).fetch().all()
+                .subscribe(rows -> {
+                    System.out.println(rows.get("email"));
+                });
         Thread.sleep(1000);
+    }
+
+    @Test
+    public void testEntityFind() {
+        Account account = this.r2dbcEntityTemplate.select(Account.class).matching(Query.query(where("id").is(1))).first().block();
+        System.out.println(account.getEmail());
     }
 
     @Test
