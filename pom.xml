@@ -11,22 +11,17 @@
     <name>r2dbc-demo</name>
     <description>Demo project for Spring Boot</description>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.0-M2</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <spring-boot.version>2.4.0-M3</spring-boot.version>
         <netty.version>4.1.52.Final</netty.version>
-        <database-rider.version>1.16.0</database-rider.version>
-        <junit5.version>5.6.2</junit5.version>
+        <database-rider.version>1.16.1</database-rider.version>
+        <junit5.version>5.7.0</junit5.version>
         <r2dbc-bom.version>Arabba-SR7</r2dbc-bom.version>
-        <reactor-bom.version>2020.0.0-M2</reactor-bom.version>
+        <reactor-bom.version>2020.0.0-RC1</reactor-bom.version>
         <kotlin.version>1.4.10</kotlin.version>
         <testcontainers.version>1.15.0-rc1</testcontainers.version>
     </properties>
@@ -78,17 +73,6 @@
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>r2dbc</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!--
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>jdbc</artifactId>
-            <scope>test</scope>
-        </dependency>-->
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>mysql</artifactId>
@@ -191,16 +175,18 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
