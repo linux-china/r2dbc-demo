@@ -16,14 +16,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.4.0-RC1</spring-boot.version>
-        <netty.version>4.1.43.Final</netty.version>
-        <database-rider.version>1.16.1</database-rider.version>
+        <spring-boot.version>2.4.0</spring-boot.version>
+        <netty.version>4.1.54.Final</netty.version>
+        <database-rider.version>1.18.0</database-rider.version>
         <junit5.version>5.7.0</junit5.version>
         <r2dbc-bom.version>Arabba-SR8</r2dbc-bom.version>
-        <reactor-bom.version>2020.0.0</reactor-bom.version>
+        <reactor-bom.version>2020.0.1</reactor-bom.version>
         <kotlin.version>1.4.10</kotlin.version>
-        <testcontainers.version>1.15.0-rc2</testcontainers.version>
+        <testcontainers.version>1.15.0</testcontainers.version>
     </properties>
 
     <dependencies>
@@ -80,12 +80,7 @@
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
+            <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
