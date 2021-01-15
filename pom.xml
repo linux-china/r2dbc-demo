@@ -16,12 +16,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.4.0</spring-boot.version>
-        <netty.version>4.1.55.Final</netty.version>
-        <database-rider.version>1.18.0</database-rider.version>
+        <spring-boot.version>2.4.2</spring-boot.version>
+        <netty.version>4.1.58.Final</netty.version>
+        <database-rider.version>1.21.1</database-rider.version>
         <junit5.version>5.7.0</junit5.version>
         <r2dbc-bom.version>Arabba-SR8</r2dbc-bom.version>
-        <reactor-bom.version>2020.0.2</reactor-bom.version>
+        <reactor-bom.version>2020.0.3</reactor-bom.version>
         <kotlin.version>1.4.21</kotlin.version>
         <testcontainers.version>1.15.0</testcontainers.version>
     </properties>
