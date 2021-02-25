@@ -16,13 +16,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.4.2</spring-boot.version>
-        <netty.version>4.1.58.Final</netty.version>
+        <spring-boot.version>2.4.3</spring-boot.version>
+        <netty.version>4.1.59.Final</netty.version>
         <database-rider.version>1.21.1</database-rider.version>
-        <junit5.version>5.7.0</junit5.version>
-        <r2dbc-bom.version>Arabba-SR8</r2dbc-bom.version>
+        <junit5.version>5.7.1</junit5.version>
+        <r2dbc-bom.version>Arabba-SR9</r2dbc-bom.version>
         <reactor-bom.version>2020.0.3</reactor-bom.version>
-        <kotlin.version>1.4.21</kotlin.version>
+        <kotlin.version>1.4.31</kotlin.version>
         <testcontainers.version>1.15.0</testcontainers.version>
     </properties>
 
@@ -54,7 +54,6 @@
         <dependency>
             <groupId>org.mariadb</groupId>
             <artifactId>r2dbc-mariadb</artifactId>
-            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
