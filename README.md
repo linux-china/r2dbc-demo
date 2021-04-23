@@ -31,8 +31,8 @@ scheme  sub-scheme  authority   path       query
 
 * R2DBC Home: http://r2dbc.io/
 * R2DBC Specification: http://r2dbc.io/spec/1.0.0.M7/spec/html/
-* Spring Data R2DBC 1.0 M1 released: https://spring.io/blog/2018/12/12/spring-data-r2dbc-1-0-m1-released
-* Spring Data R2DBC - Reference Documentation: https://docs.spring.io/spring-data/r2dbc/docs/1.0.x/reference/html/
+* Spring Data R2DBC - Reference Documentation: https://docs.spring.io/spring-data/r2dbc/docs/1.3.0/reference/html/
+* Spring Data R2DBC 1.3.0 API: https://docs.spring.io/spring-data/r2dbc/docs/1.3.0/api/
 * Asynchronous RDBMS access with Spring Data R2DBC: https://lankydanblog.com/2019/02/16/asynchronous-rdbms-access-with-spring-data-r2dbc/
 * R2DBC MySQL: https://github.com/mirromutth/r2dbc-mysql
 * Experimental Spring Boot support for R2DBC: https://github.com/spring-projects-experimental/spring-boot-r2dbc
