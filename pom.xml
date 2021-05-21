@@ -11,18 +11,17 @@
     <name>r2dbc-demo</name>
     <description>Demo project for Spring Boot</description>
 
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.5.0-RC1</spring-boot.version>
-        <netty.version>4.1.63.Final</netty.version>
-        <database-rider.version>1.23.0</database-rider.version>
-        <junit5.version>5.7.1</junit5.version>
-        <r2dbc-bom.version>Arabba-SR9</r2dbc-bom.version>
-        <reactor-bom.version>2020.0.6</reactor-bom.version>
-        <kotlin.version>1.4.32</kotlin.version>
+        <spring-boot.version>2.5.0</spring-boot.version>
+        <netty.version>4.1.65.Final</netty.version>
+        <database-rider.version>1.23.1</database-rider.version>
+        <junit5.version>5.7.2</junit5.version>
+        <r2dbc-bom.version>Arabba-SR10</r2dbc-bom.version>
+        <reactor-bom.version>2020.0.7</reactor-bom.version>
+        <kotlin.version>1.5.0</kotlin.version>
         <testcontainers.version>1.15.3</testcontainers.version>
     </properties>
 
