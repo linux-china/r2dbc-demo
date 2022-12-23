@@ -1,6 +1,7 @@
 package org.mvnsearch.r2dbcdemo.domain;
 
 import io.r2dbc.spi.Row;
+import io.r2dbc.spi.RowMetadata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Repository;
@@ -26,7 +27,7 @@ public class AccountRepoImpl implements AccountRepo {
     }
 
     @Override
-    public Mono<Integer> updatePassword(Integer id, String newPassword) {
+    public Mono<Long> updatePassword(Long id, String newPassword) {
         return databaseClient.sql("update account set passwd = $1 where id = $2")
                 .bind("$1", newPassword)
                 .bind("$2", id)
@@ -34,7 +35,7 @@ public class AccountRepoImpl implements AccountRepo {
                 .rowsUpdated();
     }
 
-    public Account row2Account(Row row) {
+    public Account row2Account(Row row, RowMetadata metadata) {
         Account account = new Account();
         account.setNick(row.get("nick", String.class));
         account.setId(row.get("id", Integer.class));

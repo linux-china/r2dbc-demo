@@ -12,5 +12,5 @@ public interface AccountRepo {
     
     Flux<Account> findAll();
 
-    Mono<Integer> updatePassword(Integer id, String newPassword);
+    Mono<Long> updatePassword(Long id, String newPassword);
 }
