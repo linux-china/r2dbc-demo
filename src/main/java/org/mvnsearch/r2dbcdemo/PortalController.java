@@ -32,7 +32,7 @@ public class PortalController {
     }
 
     @PostMapping("/account/update_passwd")
-    public Mono<Integer> updatePassword(@Param(value = "id") Integer id, @Param(value = "id") String password) {
+    public Mono<Long> updatePassword(@Param(value = "id") Long id, @Param(value = "id") String password) {
         return accountRepo.updatePassword(id, password);
     }
 }
