@@ -32,7 +32,7 @@ public class MariadbR2DBCTest {
 
     @BeforeAll
     public void beforeAll() {
-        String r2dbcUrl = "r2dbc:mariadb://root@localhost:3306/r2dbc";
+        String r2dbcUrl = "r2dbc:mariadb://root:123456@localhost:3306/r2dbc?allowPublicKeyRetrieval=true&useSSL=false";
         ConnectionFactory connectionFactory = ConnectionFactories.get(r2dbcUrl);
         this.connection = Mono.from(connectionFactory.create()).block();
         this.databaseClient = DatabaseClient.create(connectionFactory);
